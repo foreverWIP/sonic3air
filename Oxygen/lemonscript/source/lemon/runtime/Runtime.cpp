@@ -888,7 +888,7 @@ namespace lemon
 			}
 		}
 
-		mStaticMemory.resize(totalSize);
+		mStaticMemory.resize(totalSize + sizeof(int64)); // Allocate at least sizeof(int64) to not trip up the serializer
 
 		for (size_t index = 0; index < mProgram->getGlobalVariables().size(); ++index)
 		{

@@ -15,14 +15,13 @@ pushd curl
 
 pushd projects\Windows\VC14.30
 set _CL_=/MT
-%msbuildPath22% curl-all.sln /target:libcurl /property:Configuration="LIB Release - DLL Windows SSPI" /property:Platform=Win32 /p:RuntimeLibrary=MT_StaticRelease -verbosity:minimal
-%msbuildPath22% curl-all.sln /target:libcurl /property:Configuration="LIB Release - DLL Windows SSPI" /property:Platform=x64   /p:RuntimeLibrary=MT_StaticRelease -verbosity:minimal
+%msbuildPath% curl-all.sln /p:PlatformToolset=v142 /target:libcurl /property:Configuration="LIB Release - DLL Windows SSPI" /property:Platform=Win32 /p:RuntimeLibrary=MT_StaticRelease -verbosity:minimal
+%msbuildPath% curl-all.sln /p:PlatformToolset=v142 /target:libcurl /property:Configuration="LIB Release - DLL Windows SSPI" /property:Platform=x64   /p:RuntimeLibrary=MT_StaticRelease -verbosity:minimal
 set _CL_=
+popd
 popd
 
 call copy_curl.bat no_pause
-
-popd
 
 
 :: Done

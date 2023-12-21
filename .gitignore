@@ -108,3 +108,4 @@ framework/include
 *.log
 *.dmp
 *.vcxproj.user
+*.FileListAbsolute.txt

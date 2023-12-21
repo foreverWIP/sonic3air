@@ -27,16 +27,7 @@
 
 
 // SDL
-#ifdef PLATFORM_WINDOWS
-	// Needed for MSYS2
-	#if defined(__GNUC__)
-		#include <SDL2/SDL.h>
-	#else
-		#include <SDL/SDL.h>
-	#endif
-#else
-	#include <SDL.h>
-#endif
+#include <SDL.h>
 
 
 // OpenGL

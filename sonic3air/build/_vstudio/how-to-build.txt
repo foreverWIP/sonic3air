@@ -21,12 +21,12 @@ Visual Studio 2022 should work as well, but isn't tested yet.
 
 >>> Build the external dependencies in "framework"
 
-Under "framework/external", you can find multiple libraries that S3AIR is built upon.
+Under "dependencies", you can find multiple libraries that S3AIR is built upon.
 Each of them needs to be built once.
 
 The easiest way to do so is as follows:
 
-- Open the batch script at "framework/external/build_externals_windows.bat" with a text editor
+- Open the batch script at "dependencies/build_externals_windows.bat" with a text editor
 	and change "msbuildPath" to point to your Visual Studio installation's MSBuild.exe.
 
 - Then execute the batch script.
@@ -37,7 +37,7 @@ The easiest way to do so is as follows:
 
 Alternatively or in case of errors:
 
-- Have a look at the "how-to-build.txt" files inside the sub-directories of "framework/external"
+- Have a look at the "how-to-build.txt" files inside the sub-directories of "dependencies"
 	for details on how to build manually. If building from the S3AIR Github repository, you can
 	ignore the "If downloaded xyz separately or updating it" part of the instructions, as these
 	changes are already applied to the Visual Studio projects.

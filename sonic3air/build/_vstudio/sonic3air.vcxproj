@@ -215,8 +215,8 @@
     <TargetName>Sonic3AIR</TargetName>
     <IntDir>tmp\sonic3air_$(Configuration)_$(BuildCode)\</IntDir>
     <OutDir>$(ProjectDir)..\..\bin\$(Configuration)_$(BuildCode)\</OutDir>
-    <IncludePath>$(ProjectDir)..\..\..\framework\external\sdl\SDL2\include;$(ProjectDir)..\..\..\framework\external\ogg-vorbis\libvorbis\include;$(ProjectDir)..\..\..\framework\external\ogg-vorbis\libogg\include;$(ProjectDir)..\..\..\librmx\source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\..\..\framework\external\ogg-vorbis\libogg\win32\VS2015\$(Platform)\Release;$(ProjectDir)..\..\..\framework\external\ogg-vorbis\libvorbis\win32\VS2010\$(Platform)\Release;$(ProjectDir)..\..\..\framework\external\sdl\SDL2\VisualC\$(Platform)\$(Configuration);$(ProjectDir)..\..\..\framework\external\curl\curl\build\$(Platform)\VC14.30\LIB Release - DLL Windows SSPI;$(ProjectDir)..\..\..\framework\external\zlib\lib\$(Configuration)_$(PlatformTarget);$(ProjectDir)..\..\..\librmx\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\..\..\dependencies\sdl\SDL2\include;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libvorbis\include;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libogg\include;$(ProjectDir)..\..\..\librmx\source;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libogg\win32\VS2015\$(Platform)\Release;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libvorbis\win32\VS2010\$(Platform)\Release;$(ProjectDir)..\..\..\dependencies\sdl\SDL2\VisualC\$(Platform)\$(Configuration);$(ProjectDir)..\..\..\dependencies\curl\curl\build\$(Platform)\VC14.30\LIB Release - DLL Windows SSPI;$(ProjectDir)..\..\..\dependencies\zlib\lib\$(Configuration)_$(PlatformTarget);$(ProjectDir)..\..\..\librmx\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>Sonic3AIR</TargetName>

@@ -35,13 +35,13 @@ endif()
 set (CMAKE_CXX_FLAGS "-s USE_VORBIS=1 -s USE_SDL=2 -s USE_ZLIB=1")
 set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lidbfs.js -lwebsocket.js")
 
-include_directories(${WORKSPACE_DIR}/framework/external/sdl/SDL2/include)
+include_directories(${WORKSPACE_DIR}/dependencies/sdl/SDL2/include)
 include_directories(${WORKSPACE_DIR}/librmx/source)
 include_directories(${WORKSPACE_DIR}/lemonscript/source)
 include_directories(${WORKSPACE_DIR}/oxygenengine/source)
 include_directories(${WORKSPACE_DIR}/sonic3air/source)
 include_directories(${WORKSPACE_DIR}/sonic3air/source/external)
-include_directories(${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip)
+include_directories(${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip)
 
 
 # rmxbase
@@ -104,8 +104,8 @@ target_link_libraries(oxygen_netcore rmxbase)
 # oxygenengine
 
 file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen/*.cpp
-	${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/ioapi.c
-	${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/unzip.c)
+	${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip/ioapi.c
+	${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip/unzip.c)
 
 add_library(oxygen_enduser ${OXYGEN_SOURCES})
 

@@ -16,7 +16,7 @@ mkdir $DestDir
 # Make sure the needed binaries are all up-to-date
 
 svn up ../../librmx
-svn up ../../framework/external
+svn up ../../dependencies
 svn up ../lemonscript
 svn up ../oxygenengine
 svn up ../sonic3air

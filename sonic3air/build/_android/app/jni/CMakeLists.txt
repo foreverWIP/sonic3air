@@ -12,17 +12,17 @@ set(WORKSPACE_DIR ../../../../../..)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 # SDL2 sources as virtual subdirectory "SDL"
-add_subdirectory(${WORKSPACE_DIR}/framework/external/sdl/SDL2 SDL)
+add_subdirectory(${WORKSPACE_DIR}/dependencies/sdl/SDL2 SDL)
 
 find_library(SDL2 SDL2)
 
 
 
 include_directories(SDL/include)
-include_directories(${WORKSPACE_DIR}/framework/external/ogg-vorbis/libogg/include)
-include_directories(${WORKSPACE_DIR}/framework/external/ogg-vorbis/libvorbis/include)
-include_directories(${WORKSPACE_DIR}/framework/external/ogg-vorbis/libvorbis/lib)
-include_directories(${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip)
+include_directories(${WORKSPACE_DIR}/dependencies/ogg-vorbis/libogg/include)
+include_directories(${WORKSPACE_DIR}/dependencies/ogg-vorbis/libvorbis/include)
+include_directories(${WORKSPACE_DIR}/dependencies/ogg-vorbis/libvorbis/lib)
+include_directories(${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip)
 include_directories(${WORKSPACE_DIR}/librmx/source)
 include_directories(${WORKSPACE_DIR}/lemonscript/source)
 include_directories(${WORKSPACE_DIR}/oxygenengine/source)
@@ -32,8 +32,8 @@ include_directories(${WORKSPACE_DIR}/sonic3air/source)
 
 # ogg vorbis
 
-file(GLOB OGGVORBIS_SOURCES ${WORKSPACE_DIR}/framework/external/ogg-vorbis/libogg/src/*.c
-							${WORKSPACE_DIR}/framework/external/ogg-vorbis/libvorbis/lib/*.c)
+file(GLOB OGGVORBIS_SOURCES ${WORKSPACE_DIR}/dependencies/ogg-vorbis/libogg/src/*.c
+							${WORKSPACE_DIR}/dependencies/ogg-vorbis/libvorbis/lib/*.c)
 
 add_library(oggvorbis SHARED ${OGGVORBIS_SOURCES})
 
@@ -41,9 +41,9 @@ add_library(oggvorbis SHARED ${OGGVORBIS_SOURCES})
 
 # minizip
 
-file(GLOB MINIZIP_SOURCES ${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/ioapi.c
-						  ${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/unzip.c
-						  ${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/zip.c)
+file(GLOB MINIZIP_SOURCES ${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip/ioapi.c
+						  ${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip/unzip.c
+						  ${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip/zip.c)
 
 add_library(minizip SHARED ${MINIZIP_SOURCES})
 

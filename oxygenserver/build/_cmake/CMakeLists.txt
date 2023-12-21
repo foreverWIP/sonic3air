@@ -44,20 +44,20 @@ endif()
 ## SDL2 sources as virtual subdirectory "SDL"
 #set(SDL_STATIC ON)
 #set(SDL_SHARED OFF)
-#add_subdirectory(${WORKSPACE_DIR}/framework/external/sdl/SDL2 SDL)
+#add_subdirectory(${WORKSPACE_DIR}/dependencies/sdl/SDL2 SDL)
 
 # zlib sources as virtual subdirectory "zlib"
-include_directories(${WORKSPACE_DIR}/framework/external/zlib/zlib)		# Included before add_subdirectory so that the examples will build
-add_subdirectory(${WORKSPACE_DIR}/framework/external/zlib/zlib zlib)
+include_directories(${WORKSPACE_DIR}/dependencies/zlib/zlib)		# Included before add_subdirectory so that the examples will build
+add_subdirectory(${WORKSPACE_DIR}/dependencies/zlib/zlib zlib)
 
 
 
 #include_directories(SDL/include)
-#include_directories(${WORKSPACE_DIR}/framework/external/ogg-vorbis/libogg/include)
-#include_directories(${WORKSPACE_DIR}/framework/external/ogg-vorbis/libvorbis/include)
-#include_directories(${WORKSPACE_DIR}/framework/external/ogg-vorbis/libvorbis/lib)
+#include_directories(${WORKSPACE_DIR}/dependencies/ogg-vorbis/libogg/include)
+#include_directories(${WORKSPACE_DIR}/dependencies/ogg-vorbis/libvorbis/include)
+#include_directories(${WORKSPACE_DIR}/dependencies/ogg-vorbis/libvorbis/lib)
 include_directories(build/zlib)		# Needed for zconf.h
-#include_directories(${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip)
+#include_directories(${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip)
 include_directories(${WORKSPACE_DIR}/librmx/source)
 #include_directories(${WORKSPACE_DIR}/librmx/source/rmxmedia/glew)
 #include_directories(${WORKSPACE_DIR}/lemonscript/source)
@@ -72,8 +72,8 @@ include_directories(${WORKSPACE_DIR}/oxygenserver/source/external)
 ## TODO: I tried creating config_types.h by calling "./configure" by a add_custom_command,
 ##       but that did not work; instead the solution is to simply add the generated file to versioning
 #
-#file(GLOB OGGVORBIS_SOURCES ${WORKSPACE_DIR}/framework/external/ogg-vorbis/libogg/src/*.c
-#							${WORKSPACE_DIR}/framework/external/ogg-vorbis/libvorbis/lib/*.c)
+#file(GLOB OGGVORBIS_SOURCES ${WORKSPACE_DIR}/dependencies/ogg-vorbis/libogg/src/*.c
+#							${WORKSPACE_DIR}/dependencies/ogg-vorbis/libvorbis/lib/*.c)
 #
 #add_library(oggvorbis ${OGGVORBIS_SOURCES})
 #
@@ -81,9 +81,9 @@ include_directories(${WORKSPACE_DIR}/oxygenserver/source/external)
 #
 ## minizip
 #
-#file(GLOB MINIZIP_SOURCES ${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/ioapi.c
-#						  ${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/unzip.c
-#						  ${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/zip.c)
+#file(GLOB MINIZIP_SOURCES ${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip/ioapi.c
+#						  ${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip/unzip.c
+#						  ${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip/zip.c)
 #
 #add_library(minizip ${MINIZIP_SOURCES})
 #

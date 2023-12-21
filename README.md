@@ -41,10 +41,10 @@ For information on how to build for different platforms, find the readme files i
 ## External dependencies
 
 External libraries and code used in this project:
-* SDL2 - in "framework/external/sdl"
-* libogg & libvorbis - in "framework/external/ogg-vorbis"
-* zlib incl. minizip - in "framework/external/zlib"
-* libcurl - in "framework/external/curl"
+* SDL2 - in "dependencies/sdl"
+* libogg & libvorbis - in "dependencies/ogg-vorbis"
+* zlib incl. minizip - in "dependencies/zlib"
+* libcurl - in "dependencies/curl"
 * jsoncpp - in "librmx/source/rmxbase/jsoncpp"
 * GLEW - in "librmx/source/rmxmedia/glew"
 * Sound chip emulation related code from Genesis Plus GX - in "oxygenengine/source/oxygen/simulation/sound"

@@ -255,7 +255,7 @@
 		8DAC51C14B724DAEB3AF0F81 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		97F42DE3A1654377B7F2C6F3 /* bitwise.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = bitwise.c; path = src/bitwise.c; sourceTree = SOURCE_ROOT; };
 		9E8B602D27F8003E00ADE80F /* libogg4ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libogg4ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9EA8F29327E2E1B7006D5226 /* ogg-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ogg-Info.plist"; path = "/Users/sappharad/Documents/Coding/sonic3air/framework/external/ogg-vorbis/libogg/xcode/ogg-Info.plist"; sourceTree = "<absolute>"; };
+		9EA8F29327E2E1B7006D5226 /* ogg-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ogg-Info.plist"; path = "/Users/sappharad/Documents/Coding/sonic3air/dependencies/ogg-vorbis/libogg/xcode/ogg-Info.plist"; sourceTree = "<absolute>"; };
 		A53594342AA248879C6D7F1C /* framing.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = framing.c; path = src/framing.c; sourceTree = SOURCE_ROOT; };
 		BE7B7CC6200E4257868B6D91 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 		C8825C2F28374C9CA22FC3D0 /* crctable.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = crctable.h; path = src/crctable.h; sourceTree = SOURCE_ROOT; };

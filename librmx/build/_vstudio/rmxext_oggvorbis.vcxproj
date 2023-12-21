@@ -68,7 +68,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)..\..\lib\$(BuildCode)\</OutDir>
     <IntDir>$(ProjectName)_$(BuildCode)\</IntDir>
-    <IncludePath>$(ProjectDir)..\..\..\framework\external\ogg-vorbis\libvorbis\include;$(ProjectDir)..\..\..\framework\external\ogg-vorbis\libogg\include;$(ProjectDir)..\..\..\framework\external\sdl\SDL2\include;$(ProjectDir)\..\..\source;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libvorbis\include;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libogg\include;$(ProjectDir)..\..\..\dependencies\sdl\SDL2\include;$(ProjectDir)\..\..\source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)..\..\lib\$(BuildCode)\</OutDir>

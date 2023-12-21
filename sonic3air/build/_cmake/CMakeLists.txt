@@ -75,10 +75,10 @@ include_directories(build/zlib)		# Needed for zconf.h
 include_directories(${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip)
 include_directories(${WORKSPACE_DIR}/librmx/source)
 include_directories(${WORKSPACE_DIR}/librmx/source/rmxmedia/_glew)
-include_directories(${WORKSPACE_DIR}/Oxygen/lemonscript/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/oxygenengine/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/sonic3air/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/sonic3air/source/external)
+include_directories(${WORKSPACE_DIR}/lemonscript/source)
+include_directories(${WORKSPACE_DIR}/oxygenengine/source)
+include_directories(${WORKSPACE_DIR}/sonic3air/source)
+include_directories(${WORKSPACE_DIR}/sonic3air/source/external)
 
 
 
@@ -147,12 +147,12 @@ target_link_libraries(rmxext_oggvorbis oggvorbis)
 
 # lemonscript
 
-file(GLOB_RECURSE LEMONSCRIPT_SOURCES ${WORKSPACE_DIR}/Oxygen/lemonscript/source/lemon/*.cpp)
+file(GLOB_RECURSE LEMONSCRIPT_SOURCES ${WORKSPACE_DIR}/lemonscript/source/lemon/*.cpp)
 
 add_library(lemonscript ${LEMONSCRIPT_SOURCES})
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-	target_precompile_headers(lemonscript PRIVATE ${WORKSPACE_DIR}/Oxygen/lemonscript/source/lemon/pch.h)
+	target_precompile_headers(lemonscript PRIVATE ${WORKSPACE_DIR}/lemonscript/source/lemon/pch.h)
 endif()
 
 target_link_libraries(lemonscript rmxbase)
@@ -161,12 +161,12 @@ target_link_libraries(lemonscript rmxbase)
 
 # oxygen_netcore
 
-file(GLOB_RECURSE OXYGEN_NETCORE_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen_netcore/*.cpp)
+file(GLOB_RECURSE OXYGEN_NETCORE_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen_netcore/*.cpp)
 
 add_library(oxygen_netcore ${OXYGEN_NETCORE_SOURCES})
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-	target_precompile_headers(oxygen_netcore PRIVATE ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen_netcore/pch.h)
+	target_precompile_headers(oxygen_netcore PRIVATE ${WORKSPACE_DIR}/oxygenengine/source/oxygen_netcore/pch.h)
 endif()
 
 target_link_libraries(oxygen_netcore rmxbase)
@@ -175,12 +175,12 @@ target_link_libraries(oxygen_netcore rmxbase)
 
 # oxygenengine
 
-file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen/*.cpp)
+file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen/*.cpp)
 
 add_library(oxygen ${OXYGEN_SOURCES})
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-	target_precompile_headers(oxygen PRIVATE ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen/pch.h)
+	target_precompile_headers(oxygen PRIVATE ${WORKSPACE_DIR}/oxygenengine/source/oxygen/pch.h)
 endif()
 
 target_link_libraries(oxygen minizip)
@@ -202,7 +202,7 @@ endif()
 
 # OxygenApp
 
-file(GLOB_RECURSE ENGINEAPP_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/engineapp/*.cpp)
+file(GLOB_RECURSE ENGINEAPP_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/engineapp/*.cpp)
 
 # TODO: CMake seems to use a different working directory for this, so "Oxygen" is intentionally missing here
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${WORKSPACE_DIR}/oxygenengine")
@@ -215,7 +215,7 @@ if (UNIX AND NOT APPLE)
 endif ()
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-	target_precompile_headers(OxygenApp PRIVATE ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/engineapp/pch.h)
+	target_precompile_headers(OxygenApp PRIVATE ${WORKSPACE_DIR}/oxygenengine/source/engineapp/pch.h)
 endif()
 
 target_link_libraries(OxygenApp oxygen)
@@ -225,11 +225,11 @@ target_link_libraries(OxygenApp oxygen)
 # discord_game_sdk
 
 if (USE_DISCORD)
-	file(GLOB_RECURSE DISCORD_SOURCES ${WORKSPACE_DIR}/Oxygen/sonic3air/source/external/discord_game_sdk/cpp/*.cpp)
+	file(GLOB_RECURSE DISCORD_SOURCES ${WORKSPACE_DIR}/sonic3air/source/external/discord_game_sdk/cpp/*.cpp)
 
 	add_library(discord_game_sdk_source ${DISCORD_SOURCES})
 
-	link_directories("${WORKSPACE_DIR}/Oxygen/sonic3air/source/external/discord_game_sdk/lib/x86_64")
+	link_directories("${WORKSPACE_DIR}/sonic3air/source/external/discord_game_sdk/lib/x86_64")
 
 	target_link_libraries(discord_game_sdk_source discord_game_sdk)
 
@@ -240,7 +240,7 @@ endif()
 
 # Sonic3AIR
 
-file(GLOB_RECURSE SONIC3AIR_SOURCES ${WORKSPACE_DIR}/Oxygen/sonic3air/source/sonic3air/*.cpp)
+file(GLOB_RECURSE SONIC3AIR_SOURCES ${WORKSPACE_DIR}/sonic3air/source/sonic3air/*.cpp)
 
 # TODO: CMake seems to use a different working directory for this, so "Oxygen" is intentionally missing here
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${WORKSPACE_DIR}/sonic3air")
@@ -255,7 +255,7 @@ endif()
 target_compile_definitions(Sonic3AIR PUBLIC ENDUSER)
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-	target_precompile_headers(Sonic3AIR PRIVATE ${WORKSPACE_DIR}/Oxygen/sonic3air/source/sonic3air/pch.h)
+	target_precompile_headers(Sonic3AIR PRIVATE ${WORKSPACE_DIR}/sonic3air/source/sonic3air/pch.h)
 endif()
 
 target_link_libraries(Sonic3AIR oxygen)

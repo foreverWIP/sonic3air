@@ -149,8 +149,8 @@ void EngineDelegate::onRuntimeInit(CodeExec& codeExec)
 	// Generation of scripts from data in ROM or another source
 	ResourceScriptGenerator::generateLevelObjectTableScript(codeExec);
 	ResourceScriptGenerator::generateLevelRingsTableScript(codeExec);
-	ResourceScriptGenerator::convertLevelObjectsBinToScript(L"E:/Projects/Workspace/Oxygen/_SonLVL/skdisasm-master/Levels/AIZ/Object Pos/1.bin", L"output_objects.lemon");
-	ResourceScriptGenerator::convertLevelRingsBinToScript(L"E:/Projects/Workspace/Oxygen/_SonLVL/skdisasm-master/Levels/AIZ/Ring Pos/1.bin", L"output_rings.lemon");
+	ResourceScriptGenerator::convertLevelObjectsBinToScript(L"E:/Projects/Workspace/_SonLVL/skdisasm-master/Levels/AIZ/Object Pos/1.bin", L"output_objects.lemon");
+	ResourceScriptGenerator::convertLevelRingsBinToScript(L"E:/Projects/Workspace/_SonLVL/skdisasm-master/Levels/AIZ/Ring Pos/1.bin", L"output_rings.lemon");
 #endif
 }
 

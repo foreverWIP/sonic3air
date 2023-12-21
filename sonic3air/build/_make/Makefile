@@ -101,9 +101,9 @@ ifeq ($(STATIC),1)
 endif
 
 INCLUDES  += \
-				-I$(BASEDIR)/Oxygen/lemonscript/source \
-				-I$(BASEDIR)/Oxygen/oxygenengine/source \
-				-I$(BASEDIR)/Oxygen/sonic3air/source \
+				-I$(BASEDIR)/lemonscript/source \
+				-I$(BASEDIR)/oxygenengine/source \
+				-I$(BASEDIR)/sonic3air/source \
 				-I$(BASEDIR)/librmx/source
 
 INCLUDES += $(LIBS)

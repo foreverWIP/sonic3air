@@ -37,10 +37,10 @@ set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lidbfs.js -lwebsocket.js
 
 include_directories(${WORKSPACE_DIR}/framework/external/sdl/SDL2/include)
 include_directories(${WORKSPACE_DIR}/librmx/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/lemonscript/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/oxygenengine/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/sonic3air/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/sonic3air/source/external)
+include_directories(${WORKSPACE_DIR}/lemonscript/source)
+include_directories(${WORKSPACE_DIR}/oxygenengine/source)
+include_directories(${WORKSPACE_DIR}/sonic3air/source)
+include_directories(${WORKSPACE_DIR}/sonic3air/source/external)
 include_directories(${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip)
 
 
@@ -79,7 +79,7 @@ target_link_libraries(rmxext_oggvorbis rmxmedia)
 
 # lemonscript
 
-file(GLOB_RECURSE LEMONSCRIPT_SOURCES ${WORKSPACE_DIR}/Oxygen/lemonscript/source/lemon/*.cpp)
+file(GLOB_RECURSE LEMONSCRIPT_SOURCES ${WORKSPACE_DIR}/lemonscript/source/lemon/*.cpp)
 
 add_library(lemonscript ${LEMONSCRIPT_SOURCES})
 
@@ -89,12 +89,12 @@ target_link_libraries(lemonscript rmxbase)
 
 # oxygen_netcore
 
-file(GLOB_RECURSE OXYGEN_NETCORE_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen_netcore/*.cpp)
+file(GLOB_RECURSE OXYGEN_NETCORE_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen_netcore/*.cpp)
 
 add_library(oxygen_netcore ${OXYGEN_NETCORE_SOURCES})
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-	target_precompile_headers(oxygen_netcore PRIVATE ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen_netcore/pch.h)
+	target_precompile_headers(oxygen_netcore PRIVATE ${WORKSPACE_DIR}/oxygenengine/source/oxygen_netcore/pch.h)
 endif()
 
 target_link_libraries(oxygen_netcore rmxbase)
@@ -103,7 +103,7 @@ target_link_libraries(oxygen_netcore rmxbase)
 
 # oxygenengine
 
-file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen/*.cpp
+file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen/*.cpp
 	${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/ioapi.c
 	${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip/unzip.c)
 
@@ -120,7 +120,7 @@ target_link_libraries(oxygen_enduser oxygen_netcore)
 
 # OxygenApp
 
-#file(GLOB_RECURSE ENGINEAPP_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/engineapp/*.cpp)
+#file(GLOB_RECURSE ENGINEAPP_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/engineapp/*.cpp)
 
 # TODO: CMake seems to use a different working directory for this, so "Oxygen" is intentionally missing here
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${WORKSPACE_DIR}/oxygenengine")
@@ -136,7 +136,7 @@ target_link_libraries(oxygen_enduser oxygen_netcore)
 
 # Sonic3AIR
 
-file(GLOB_RECURSE SONIC3AIR_SOURCES ${WORKSPACE_DIR}/Oxygen/sonic3air/source/sonic3air/*.cpp)
+file(GLOB_RECURSE SONIC3AIR_SOURCES ${WORKSPACE_DIR}/sonic3air/source/sonic3air/*.cpp)
 
 # TODO: CMake seems to use a different working directory for this, so "Oxygen" is intentionally missing here
 SET(CMAKE_EXECUTABLE_SUFFIX ".js")

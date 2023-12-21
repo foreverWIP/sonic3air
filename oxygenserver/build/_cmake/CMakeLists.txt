@@ -60,10 +60,10 @@ include_directories(build/zlib)		# Needed for zconf.h
 #include_directories(${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip)
 include_directories(${WORKSPACE_DIR}/librmx/source)
 #include_directories(${WORKSPACE_DIR}/librmx/source/rmxmedia/glew)
-#include_directories(${WORKSPACE_DIR}/Oxygen/lemonscript/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/oxygenengine/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/oxygenserver/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/oxygenserver/source/external)
+#include_directories(${WORKSPACE_DIR}/lemonscript/source)
+include_directories(${WORKSPACE_DIR}/oxygenengine/source)
+include_directories(${WORKSPACE_DIR}/oxygenserver/source)
+include_directories(${WORKSPACE_DIR}/oxygenserver/source/external)
 
 
 
@@ -133,12 +133,12 @@ target_link_libraries(rmxbase zlibstatic)
 #
 ## lemonscript
 #
-#file(GLOB_RECURSE LEMONSCRIPT_SOURCES ${WORKSPACE_DIR}/Oxygen/lemonscript/source/lemon/*.cpp)
+#file(GLOB_RECURSE LEMONSCRIPT_SOURCES ${WORKSPACE_DIR}/lemonscript/source/lemon/*.cpp)
 #
 #add_library(lemonscript ${LEMONSCRIPT_SOURCES})
 #
 #if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-#	target_precompile_headers(lemonscript PRIVATE ${WORKSPACE_DIR}/Oxygen/lemonscript/source/lemon/pch.h)
+#	target_precompile_headers(lemonscript PRIVATE ${WORKSPACE_DIR}/lemonscript/source/lemon/pch.h)
 #endif()
 #
 #target_link_libraries(lemonscript rmxbase)
@@ -147,12 +147,12 @@ target_link_libraries(rmxbase zlibstatic)
 
 # oxygen_netcore
 
-file(GLOB_RECURSE OXYGEN_NETCORE_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen_netcore/*.cpp)
+file(GLOB_RECURSE OXYGEN_NETCORE_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen_netcore/*.cpp)
 
 add_library(oxygen_netcore ${OXYGEN_NETCORE_SOURCES})
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-	target_precompile_headers(oxygen_netcore PRIVATE ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen_netcore/pch.h)
+	target_precompile_headers(oxygen_netcore PRIVATE ${WORKSPACE_DIR}/oxygenengine/source/oxygen_netcore/pch.h)
 endif()
 
 target_link_libraries(oxygen_netcore rmxbase)
@@ -161,12 +161,12 @@ target_link_libraries(oxygen_netcore rmxbase)
 
 ## oxygenengine
 #
-#file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen/*.cpp)
+#file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen/*.cpp)
 #
 #add_library(oxygen ${OXYGEN_SOURCES})
 #
 #if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-#	target_precompile_headers(oxygen PRIVATE ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen/pch.h)
+#	target_precompile_headers(oxygen PRIVATE ${WORKSPACE_DIR}/oxygenengine/source/oxygen/pch.h)
 #endif()
 #
 #target_link_libraries(oxygen minizip)
@@ -179,7 +179,7 @@ target_link_libraries(oxygen_netcore rmxbase)
 
 # oxygenserver
 
-file(GLOB_RECURSE OXYGENSERVER_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenserver/source/oxygenserver/*.cpp)
+file(GLOB_RECURSE OXYGENSERVER_SOURCES ${WORKSPACE_DIR}/oxygenserver/source/oxygenserver/*.cpp)
 
 # TODO: CMake seems to use a different working directory for this, so "Oxygen" is intentionally missing here
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${WORKSPACE_DIR}/oxygenserver")
@@ -187,7 +187,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${WORKSPACE_DIR}/oxygenserver")
 add_executable(oxygenserver ${OXYGENSERVER_SOURCES})
 
 if (NOT CMAKE_VERSION VERSION_LESS "3.16.0")
-	target_precompile_headers(oxygenserver PRIVATE ${WORKSPACE_DIR}/Oxygen/oxygenserver/source/oxygenserver/pch.h)
+	target_precompile_headers(oxygenserver PRIVATE ${WORKSPACE_DIR}/oxygenserver/source/oxygenserver/pch.h)
 endif()
 
 target_link_libraries(oxygenserver oxygen_netcore)

@@ -24,9 +24,9 @@ include_directories(${WORKSPACE_DIR}/framework/external/ogg-vorbis/libvorbis/inc
 include_directories(${WORKSPACE_DIR}/framework/external/ogg-vorbis/libvorbis/lib)
 include_directories(${WORKSPACE_DIR}/framework/external/zlib/zlib/contrib/minizip)
 include_directories(${WORKSPACE_DIR}/librmx/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/lemonscript/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/oxygenengine/source)
-include_directories(${WORKSPACE_DIR}/Oxygen/sonic3air/source)
+include_directories(${WORKSPACE_DIR}/lemonscript/source)
+include_directories(${WORKSPACE_DIR}/oxygenengine/source)
+include_directories(${WORKSPACE_DIR}/sonic3air/source)
 
 
 
@@ -88,7 +88,7 @@ target_link_libraries(rmxext_oggvorbis oggvorbis)
 
 # lemonscript
 
-file(GLOB_RECURSE LEMONSCRIPT_SOURCES ${WORKSPACE_DIR}/Oxygen/lemonscript/source/lemon/*.cpp)
+file(GLOB_RECURSE LEMONSCRIPT_SOURCES ${WORKSPACE_DIR}/lemonscript/source/lemon/*.cpp)
 
 add_library(lemonscript ${LEMONSCRIPT_SOURCES})
 
@@ -98,7 +98,7 @@ target_link_libraries(lemonscript rmxbase)
 
 # Oxygen Core Library
 
-file(GLOB_RECURSE OXYGEN_NETCORE_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen_netcore/*.cpp)
+file(GLOB_RECURSE OXYGEN_NETCORE_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen_netcore/*.cpp)
 
 add_library(oxygen_netcore ${OXYGEN_NETCORE_SOURCES})
 
@@ -108,7 +108,7 @@ target_link_libraries(oxygen_netcore rmxbase)
 
 # Oxygen Engine Library
 
-file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/Oxygen/oxygenengine/source/oxygen/*.cpp)
+file(GLOB_RECURSE OXYGEN_SOURCES ${WORKSPACE_DIR}/oxygenengine/source/oxygen/*.cpp)
 
 add_library(oxygen ${OXYGEN_SOURCES})
 
@@ -122,7 +122,7 @@ target_link_libraries(oxygen oxygen_netcore)
 
 # Sonic3AIR
 
-file(GLOB_RECURSE SONIC3AIR_SOURCES ${WORKSPACE_DIR}/Oxygen/sonic3air/source/sonic3air/*.cpp)
+file(GLOB_RECURSE SONIC3AIR_SOURCES ${WORKSPACE_DIR}/sonic3air/source/sonic3air/*.cpp)
 
 add_library(main SHARED ${SONIC3AIR_SOURCES})
 

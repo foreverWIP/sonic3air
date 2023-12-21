@@ -19,10 +19,10 @@ If needed, install them via "sudo apt-get install" (for Debian-based systems, th
 The following commands assume you start in the root directory of the S3AIR Git repo.
 
 On first compilation, you need to create the build directory:
-	- mkdir ./Oxygen/sonic3air/build/_cmake/build
+	- mkdir ./sonic3air/build/_cmake/build
 
 Build with CMake:
-	- cd ./Oxygen/sonic3air/build/_cmake/build
+	- cd ./sonic3air/build/_cmake/build
 	- cmake -DCMAKE_BUILD_TYPE=Release ..
 	- cmake --build .
 
@@ -40,9 +40,9 @@ Place a copy of the S3&K ROM "Sonic_Knuckles_wSonic3.bin" inside "Oxygen/sonic3a
 The following commands assume you're in the root directory of the S3AIR Git repo.
 
 Run S3AIR:
-	- cd ./Oxygen/sonic3air
+	- cd ./sonic3air
 	- ./sonic3air_linux
 
 To run OxygenApp instead:
-	- cd ./Oxygen/oxygenengine
+	- cd ./oxygenengine
 	- ./oxygenapp_linux

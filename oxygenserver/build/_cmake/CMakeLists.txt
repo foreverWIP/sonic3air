@@ -63,7 +63,7 @@ include_directories(${WORKSPACE_DIR}/librmx/source)
 #include_directories(${WORKSPACE_DIR}/lemonscript/source)
 include_directories(${WORKSPACE_DIR}/oxygenengine/source)
 include_directories(${WORKSPACE_DIR}/oxygenserver/source)
-include_directories(${WORKSPACE_DIR}/oxygenserver/source/external)
+include_directories(${WORKSPACE_DIR}/dependencies)
 
 
 

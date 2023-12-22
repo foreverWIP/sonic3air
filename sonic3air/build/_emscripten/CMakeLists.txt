@@ -40,7 +40,7 @@ include_directories(${WORKSPACE_DIR}/librmx/source)
 include_directories(${WORKSPACE_DIR}/lemonscript/source)
 include_directories(${WORKSPACE_DIR}/oxygenengine/source)
 include_directories(${WORKSPACE_DIR}/sonic3air/source)
-include_directories(${WORKSPACE_DIR}/sonic3air/source/external)
+include_directories(${WORKSPACE_DIR}/dependencies)
 include_directories(${WORKSPACE_DIR}/dependencies/zlib/zlib/contrib/minizip)
 
 

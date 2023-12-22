@@ -48,9 +48,9 @@ External libraries and code used in this project:
 * jsoncpp - in "librmx/source/rmxbase/jsoncpp"
 * GLEW - in "librmx/source/rmxmedia/glew"
 * Sound chip emulation related code from Genesis Plus GX - in "oxygenengine/source/oxygen/simulation/sound"
-* Discord Game SDK - in "Oxygen/sonic3air/source/external/discord_game_sdk"
-* xBRZ upscaler shader code - in "Oxygen/oxygenengine/data/shader" and once more in "Oxygen/sonic3air/data/shader"
-* Hqx upscaler shader code & data files - in "Oxygen/oxygenengine/data/shader" and once more in "Oxygen/sonic3air/data/shader"
+* Discord Game SDK - in "dependencies/discord_game_sdk"
+* xBRZ upscaler shader code - in "oxygenengine/data/shader" and once more in "sonic3air/data/shader"
+* Hqx upscaler shader code & data files - in "oxygenengine/data/shader" and once more in "sonic3air/data/shader"
 
 
 ## Contributors

@@ -78,7 +78,7 @@ include_directories(${WORKSPACE_DIR}/librmx/source/rmxmedia/_glew)
 include_directories(${WORKSPACE_DIR}/lemonscript/source)
 include_directories(${WORKSPACE_DIR}/oxygenengine/source)
 include_directories(${WORKSPACE_DIR}/sonic3air/source)
-include_directories(${WORKSPACE_DIR}/sonic3air/source/external)
+include_directories(${WORKSPACE_DIR}/dependencies)
 
 
 
@@ -225,11 +225,11 @@ target_link_libraries(OxygenApp oxygen)
 # discord_game_sdk
 
 if (USE_DISCORD)
-	file(GLOB_RECURSE DISCORD_SOURCES ${WORKSPACE_DIR}/sonic3air/source/external/discord_game_sdk/cpp/*.cpp)
+	file(GLOB_RECURSE DISCORD_SOURCES ${WORKSPACE_DIR}/dependencies/discord_game_sdk/cpp/*.cpp)
 
 	add_library(discord_game_sdk_source ${DISCORD_SOURCES})
 
-	link_directories("${WORKSPACE_DIR}/sonic3air/source/external/discord_game_sdk/lib/x86_64")
+	link_directories("${WORKSPACE_DIR}/dependencies/discord_game_sdk/lib/x86_64")
 
 	target_link_libraries(discord_game_sdk_source discord_game_sdk)
 

@@ -83,10 +83,10 @@ mac_dist
 /sonic3air/build/_android/local.properties
 
 # Discord Game SDL binaries
-!/sonic3air/source/external/discord_game_sdk/lib/*/*.dll
-!/sonic3air/source/external/discord_game_sdk/lib/*/*.lib
-!/sonic3air/source/external/discord_game_sdk/lib/*/*.dylib
-!/sonic3air/source/external/discord_game_sdk/lib/*/*.so
+!/dependencies/discord_game_sdk/lib/*/*.dll
+!/dependencies/discord_game_sdk/lib/*/*.lib
+!/dependencies/discord_game_sdk/lib/*/*.dylib
+!/dependencies/discord_game_sdk/lib/*/*.so
 
 dependencies/ogg-vorbis/libogg/build
 dependencies/ogg-vorbis/libogg/xcode/libogg.xcodeproj/project.xcworkspace/xcuserdata

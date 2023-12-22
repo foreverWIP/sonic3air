@@ -37,7 +37,7 @@ cp sonic3air_linux $OutputDir
 chmod +x $OutputDir/sonic3air_linux
 #patchelf --set-rpath '$ORIGIN' $OutputDir/sonic3air_linux		# Not needed any more, see CMAKE_EXE_LINKER_FLAGS in CMakeLists.txt
 
-cp source/external/discord_game_sdk/lib/x86_64/libdiscord_game_sdk.so $OutputDir
+cp dependencies/discord_game_sdk/lib/x86_64/libdiscord_game_sdk.so $OutputDir
 
 # Leave out the remastered music, as the Linux build can use an internal downloader
 rm $OutputDir/data/audioremaster.bin

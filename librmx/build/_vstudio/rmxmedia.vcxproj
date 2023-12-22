@@ -68,7 +68,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)..\..\lib\$(BuildCode)\</OutDir>
     <IntDir>$(ProjectName)_$(BuildCode)\</IntDir>
-    <IncludePath>$(ProjectDir)..\..\..\dependencies\sdl\SDL2\include;$(ProjectDir)\..\..\source;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\..\..\dependencies\sdl2\include;$(ProjectDir)\..\..\source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)..\..\lib\$(BuildCode)\</OutDir>

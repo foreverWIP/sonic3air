@@ -216,7 +216,7 @@
     <IntDir>tmp\sonic3air_$(Configuration)_$(BuildCode)\</IntDir>
     <OutDir>$(ProjectDir)..\..\bin\$(Configuration)_$(BuildCode)\</OutDir>
     <IncludePath>$(ProjectDir)..\..\..\dependencies\sdl\SDL2\include;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libvorbis\include;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libogg\include;$(ProjectDir)..\..\..\librmx\source;$(ProjectDir)..\..\..\dependencies;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libogg\win32\VS2015\$(Platform)\Release;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libvorbis\win32\VS2010\$(Platform)\Release;$(ProjectDir)..\..\..\dependencies\sdl\SDL2\VisualC\$(Platform)\$(Configuration);$(ProjectDir)..\..\..\dependencies\curl\build\$(Platform)\VC14.20\LIB Release - DLL Windows SSPI;$(ProjectDir)..\..\..\dependencies\zlib\lib\$(Configuration)_$(PlatformTarget);$(ProjectDir)..\..\..\librmx\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libogg\win32\VS2015\$(Platform)\Release;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libvorbis\win32\VS2010\$(Platform)\Release;$(ProjectDir)..\..\..\dependencies\sdl\SDL2\VisualC\$(Platform)\$(Configuration);$(ProjectDir)..\..\..\dependencies\curl\build\$(Platform)\VC14.20\LIB Release - DLL Windows SSPI;$(ProjectDir)..\..\..\dependencies\zlib\lib\$(Configuration)_$(PlatformTarget);$(ProjectDir)..\..\..\librmx\lib;$(ProjectDir)..\..\..\dependencies\zlib\contrib\vstudio\vc14.2\$(PlatformTarget)\MiniZip$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>Sonic3AIR</TargetName>
@@ -258,7 +258,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../../../lemonscript/lib/$(BuildCode);../../../oxygenengine/build/_vstudio/lib/$(Configuration)_$(BuildCode);$(SolutionDir)lib/$(Configuration)_$(BuildCode);$(SolutionDir)../../../dependencies/discord_game_sdk/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>rmxext_oggvorbis.lib;libogg.lib;libvorbis_static.lib;lemonscript.lib;oxygen_netcore.lib;oxygen.lib;discord_game_sdk.lib;discord_game_sdk.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>rmxext_oggvorbis.lib;zlibvc.lib;libogg.lib;libvorbis_static.lib;lemonscript.lib;oxygen_netcore.lib;oxygen.lib;discord_game_sdk.lib;discord_game_sdk.dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>

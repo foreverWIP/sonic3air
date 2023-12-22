@@ -9,12 +9,6 @@
 #include "rmxbase.h"
 #include "zlib.h"
 
-// Other platforms than Windows with Visual C++ need to the zlib library dependency into their build separately
-#if defined(PLATFORM_WINDOWS) && defined(_MSC_VER)
-	#pragma comment(lib, "zlib.lib")
-#endif
-
-
 bool ZlibDeflate::decode(std::vector<uint8>& output, const void* inputData, size_t inputSize)
 {
 	// Setup inflate

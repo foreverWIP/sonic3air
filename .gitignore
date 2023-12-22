@@ -88,13 +88,13 @@ mac_dist
 !/dependencies/discord_game_sdk/lib/*/*.dylib
 !/dependencies/discord_game_sdk/lib/*/*.so
 
-dependencies/ogg-vorbis/libogg/build
-dependencies/ogg-vorbis/libogg/xcode/libogg.xcodeproj/project.xcworkspace/xcuserdata
-dependencies/ogg-vorbis/libogg/xcode/libogg.xcodeproj/xcuserdata
+dependencies/libogg/build
+dependencies/libogg/xcode/libogg.xcodeproj/project.xcworkspace/xcuserdata
+dependencies/libogg/xcode/libogg.xcodeproj/xcuserdata
 dependencies/sdl/SDL2/Xcode/SDL/SDL.xcodeproj/xcuserdata
-dependencies/ogg-vorbis/libvorbis/xcode/build
-dependencies/ogg-vorbis/libvorbis/xcode/vorbis.xcodeproj/project.xcworkspace/xcuserdata
-dependencies/ogg-vorbis/libvorbis/xcode/vorbis.xcodeproj/xcuserdata
+dependencies/libvorbis/xcode/build
+dependencies/libvorbis/xcode/vorbis.xcodeproj/project.xcworkspace/xcuserdata
+dependencies/libvorbis/xcode/vorbis.xcodeproj/xcuserdata
 Oxygen/sonic3air/build/_xcode/build/XCBuildData
 Oxygen/sonic3air/build/_xcode/build/sonic3air.build
 dependencies/sdl/SDL2/Xcode/SDL/build/SDL.build

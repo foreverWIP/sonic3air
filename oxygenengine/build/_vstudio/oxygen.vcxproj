@@ -337,7 +337,7 @@
     <OutDir>$(ProjectDir)lib\$(Configuration)_$(BuildCode)\</OutDir>
     <IntDir>tmp\oxygen_$(Configuration)_$(BuildCode)\</IntDir>
     <TargetName>oxygen</TargetName>
-    <IncludePath>$(ProjectDir)..\..\..\dependencies\sdl\SDL2\include;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libvorbis\include;$(ProjectDir)..\..\..\dependencies\ogg-vorbis\libogg\include;$(ProjectDir)..\..\..\dependencies\curl\include;$(ProjectDir)..\..\..\dependencies\zlib;$(ProjectDir)..\..\..\dependencies\zlib\contrib\minizip;$(ProjectDir)..\..\..\librmx\source;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\..\..\dependencies\sdl\SDL2\include;$(ProjectDir)..\..\..\dependencies\libvorbis\include;$(ProjectDir)..\..\..\dependencies\libogg\include;$(ProjectDir)..\..\..\dependencies\curl\include;$(ProjectDir)..\..\..\dependencies\zlib;$(ProjectDir)..\..\..\dependencies\zlib\contrib\minizip;$(ProjectDir)..\..\..\librmx\source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>oxygen</TargetName>

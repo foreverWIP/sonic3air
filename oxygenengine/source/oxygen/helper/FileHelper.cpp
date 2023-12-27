@@ -16,9 +16,9 @@
 
 
 // Other platforms than Windows with Visual C++ need to the zlib library dependency into their build separately
-#if defined(PLATFORM_WINDOWS) && defined(_MSC_VER)
-	#pragma comment(lib, "minizip.lib")
-#endif
+// #if defined(PLATFORM_WINDOWS) && defined(_MSC_VER)
+// 	#pragma comment(lib, "minizip.lib")
+// #endif
 
 #include "unzip.h"
 

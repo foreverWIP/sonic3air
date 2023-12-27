@@ -16,10 +16,10 @@
 	#define CURL_STATICLIB
 	#include <curl/curl.h>
 
-	#pragma comment(lib, "libcurl.lib")
-	#pragma comment(lib, "ws2_32.lib")
-	#pragma comment(lib, "wldap32.lib")
-	#pragma comment(lib, "crypt32.lib")
+	// #pragma comment(lib, "libcurl.lib")
+	// #pragma comment(lib, "ws2_32.lib")
+	// #pragma comment(lib, "wldap32.lib")
+	// #pragma comment(lib, "crypt32.lib")
 
 #elif defined(PLATFORM_LINUX) || defined(PLATFORM_MAC)
 	#define PLATFORM_SUPPORTS_DOWNLOADER

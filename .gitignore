@@ -43,16 +43,16 @@ bin/
 .vs
 
 # SDL2 Visual Studio generated files
-/dependencies/sdl/SDL2/VisualC/x64
-/dependencies/sdl/SDL2/VisualC/Win32
-/dependencies/sdl/SDL2/VisualC/*/x64
-/dependencies/sdl/SDL2/VisualC/*/Win32
-/dependencies/sdl/SDL2/VisualC/tests/*/x64
-/dependencies/sdl/SDL2/VisualC/tests/*/Win32
-/dependencies/sdl/SDL2/VisualC/tests/*/*.bmp
-/dependencies/sdl/SDL2/VisualC/tests/*/*.bmp
-/dependencies/sdl/SDL2/VisualC/tests/loopwave/sample.wav
-/dependencies/sdl/SDL2/VisualC/tests/testoverlay2/moose.dat
+/dependencies/sdl2/VisualC/x64
+/dependencies/sdl2/VisualC/Win32
+/dependencies/sdl2/VisualC/*/x64
+/dependencies/sdl2/VisualC/*/Win32
+/dependencies/sdl2/VisualC/tests/*/x64
+/dependencies/sdl2/VisualC/tests/*/Win32
+/dependencies/sdl2/VisualC/tests/*/*.bmp
+/dependencies/sdl2/VisualC/tests/*/*.bmp
+/dependencies/sdl2/VisualC/tests/loopwave/sample.wav
+/dependencies/sdl2/VisualC/tests/testoverlay2/moose.dat
 
 # Oxygen
 /oxygenengine/OxygenApp
@@ -82,7 +82,7 @@ mac_dist
 # Android
 /sonic3air/build/_android/local.properties
 
-# Discord Game SDL binaries
+# Discord Game SDK binaries
 !/dependencies/discord_game_sdk/lib/*/*.dll
 !/dependencies/discord_game_sdk/lib/*/*.lib
 !/dependencies/discord_game_sdk/lib/*/*.dylib
@@ -91,13 +91,13 @@ mac_dist
 dependencies/libogg/build
 dependencies/libogg/xcode/libogg.xcodeproj/project.xcworkspace/xcuserdata
 dependencies/libogg/xcode/libogg.xcodeproj/xcuserdata
-dependencies/sdl/SDL2/Xcode/SDL/SDL.xcodeproj/xcuserdata
+dependencies/sdl2/Xcode/SDL/SDL.xcodeproj/xcuserdata
 dependencies/libvorbis/xcode/build
 dependencies/libvorbis/xcode/vorbis.xcodeproj/project.xcworkspace/xcuserdata
 dependencies/libvorbis/xcode/vorbis.xcodeproj/xcuserdata
 Oxygen/sonic3air/build/_xcode/build/XCBuildData
 Oxygen/sonic3air/build/_xcode/build/sonic3air.build
-dependencies/sdl/SDL2/Xcode/SDL/build/SDL.build
+dependencies/sdl2/Xcode/SDL/build/SDL.build
 
 *.res
 *.recipe
@@ -109,3 +109,14 @@ framework/include
 *.dmp
 *.vcxproj.user
 *.FileListAbsolute.txt
+!libluasocket.dylib
+!libluasocket.so
+!luasocket.dll
+!luasocket.pdb
+!premake5-windows.exe
+!premake5-windows.pdb
+
+build/obj
+build/*.sln
+build/*.vcxproj
+build/*.filters

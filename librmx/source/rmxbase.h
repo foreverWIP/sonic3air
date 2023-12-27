@@ -76,9 +76,9 @@
 
 
 // Library linking via pragma
-#if defined(PLATFORM_WINDOWS) && defined(RMX_LIB)
-	#pragma comment(lib, "rmxbase.lib")
-#endif
+// #if defined(PLATFORM_WINDOWS) && defined(RMX_LIB)
+// 	#pragma comment(lib, "rmxbase.lib")
+// #endif
 
 
 

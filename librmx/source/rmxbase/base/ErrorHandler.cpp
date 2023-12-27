@@ -20,7 +20,7 @@
 		#define NTDDI_VERSION NTDDI_VISTA
 		#include <Commctrl.h>
 
-		#pragma comment(lib, "Dbghelp.lib")
+		// #pragma comment(lib, "Dbghelp.lib")
 		#pragma warning(push)
 		#pragma warning(disable: 4091)	// Disable warning "C:\Program Files (x86)\Windows Kits\8.1\Include\um\DbgHelp.h(1544): warning C4091: 'typedef ': ignored on left of '' when no variable is declared"
 		#include <DbgHelp.h>

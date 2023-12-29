@@ -1,3 +1,6 @@
+local dependencies_out_dir = "%{wks.location}/../dependencies/out/%{cfg.platform}/%{cfg.buildcfg}/"
+local ensure_out_dir_exists = "{MKDIR} " .. dependencies_out_dir
+
 local joined_command_lists = function(list_1, list_2)
     local ret_table = {}
     for k,v in ipairs(list_1) do
@@ -31,54 +34,6 @@ local get_msbuild_path = function()
     end
 end
 
-local get_msbuild_dependency_build_commands = function()
-    return {
-        "set _CL_=/MT",
-        "{CHDIR} ../dependencies",
-        -- sdl
-        "{CHDIR} sdl2/VisualC",
-        "\"" .. get_msbuild_path() .. "\" SDL.sln /target:SDL2 /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
-        "\"" .. get_msbuild_path() .. "\" SDL.sln /target:SDL2main /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
-        "{CHDIR} ../../",
-        -- ogg-vorbis
-        "{CHDIR} libogg/win32/VS2015",
-        "\"" .. get_msbuild_path() .. "\" libogg.sln /target:libogg /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
-        "{CHDIR} ../../../libvorbis/win32/VS2010",
-        "\"" .. get_msbuild_path() .. "\" vorbis_static.sln /target:libvorbis_static /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
-        "\"" .. get_msbuild_path() .. "\" vorbis_static.sln /target:libvorbisfile /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
-        "\"" .. get_msbuild_path() .. "\" vorbis_static.sln /target:vorbisdec /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
-        "{CHDIR} ../../../",
-        -- curl
-        "{CHDIR} curl/projects/Windows/VC14.10",
-        "\"" .. get_msbuild_path() .. "\" curl-all.sln /target:libcurl /p:PlatformToolset=v142 /property:Configuration=\"LIB Release - DLL Windows SSPI\" /property:Platform=%{cfg.platform} /p:RuntimeLibrary=MT_StaticRelease -verbosity:minimal",
-        -- "{CHDIR} ../../../../", why doesn't this work?!
-        -- zlib
-        -- "set _CL_=",
-        -- "{CHDIR} ../../../../zlib/contrib/vstudio/vc14",
-        -- "\"" .. get_msbuild_path() .. "\" zlibvc.sln /target:zlibvc /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
-        -- "\"" .. get_msbuild_path() .. "\" zlibvc.sln /target:minizip /p:PlatformToolset=v142 /p:ConfigurationType=StaticLibrary /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
-        -- "{CHDIR} ../../../../",
-    }
-end
-
-local get_msbuild_dependency_clean_commands = function()
-    return {
-        "{RMDIR} ../dependencies/curl/build",
-        "{RMDIR} ../dependencies/libogg/win32/VS2015/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/libvorbis/win32/VS2010/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/libvorbis/win32/VS2010/libvorbis/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/libvorbis/win32/VS2010/libvorbisfile/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/libvorbis/win32/VS2010/vorbisdec/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/libvorbis/win32/VS2010/vorbisenc/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/sdl2/VisualC/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/sdl2/VisualC/SDL/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/sdl2/VisualC/SDLmain/%{cfg.platform}/%{cfg.buildcfg}",
-        "{RMDIR} ../dependencies/sdl2/VisualC/SDLtest/%{cfg.platform}/%{cfg.buildcfg}",
-        -- zlib?
-        "{RMDIR} ../dependencies/zlib/contrib/vstudio/vc14/%{cfg.architecture}",
-    }
-end
-
 local common_dependency_includes = function()
     includedirs {
         "../dependencies/curl/include",
@@ -92,8 +47,6 @@ local common_dependency_includes = function()
 end
 
 local common_config_options = function()
-    staticruntime "On"
-
     filter "configurations:Debug"
         symbols "On"
         runtime "Debug"
@@ -108,6 +61,7 @@ local common_config_options = function()
         optimize "Speed"
         flags { "LinkTimeOptimization" }
     filter {}
+    staticruntime "On"
 end
 
 workspace "sonic3air"
@@ -130,9 +84,12 @@ workspace "sonic3air"
     project "sonic3air"
         dependson {
             "oxygen",
-            "rmxext_oggvorbis"
+            "rmxext_oggvorbis",
+            "discord_game_sdk"
         }
+        filter "configurations:Debug"
         ignoredefaultlibraries { "LIBCMT" }
+        filter {}
         links({
             "opengl32.lib",
             "setupapi.lib",
@@ -142,16 +99,16 @@ workspace "sonic3air"
             "ws2_32.lib",
             "wldap32.lib",
             "crypt32.lib",
-            "../dependencies/curl/build/%{cfg.platform}/VC14.10/LIB Release - DLL Windows SSPI/libcurl.lib",
-            "../dependencies/sdl2/VisualC/%{cfg.platform}/%{cfg.buildcfg}/SDL2.lib",
-            "../dependencies/sdl2/VisualC/%{cfg.platform}/%{cfg.buildcfg}/SDL2main.lib",
-            "../dependencies/libogg/win32/VS2015/%{cfg.platform}/%{cfg.buildcfg}/libogg.lib",
-            "../dependencies/libvorbis/win32/VS2010/%{cfg.platform}/%{cfg.buildcfg}/libvorbis_static.lib",
-            "../dependencies/libvorbis/win32/VS2010/%{cfg.platform}/%{cfg.buildcfg}/libvorbisfile_static.lib",
-            "../dependencies/minizip/%{cfg.platform}/%{cfg.buildcfg}/minizip.lib",
-            "../dependencies/zlib/contrib/vstudio/vc14/%{cfg.platform}/%{cfg.buildcfg}/zlib.lib",
-            "../dependencies/discord_game_sdk/%{cfg.platform}/%{cfg.buildcfg}/discord_game_sdk.lib",
-            "../dependencies/discord_game_sdk/lib/%{cfg.architecture}/discord_game_sdk.dll.lib",
+            dependencies_out_dir .. "libcurl.lib",
+            dependencies_out_dir .. "SDL2.lib",
+            dependencies_out_dir .. "SDL2main.lib",
+            dependencies_out_dir .. "libogg.lib",
+            dependencies_out_dir .. "libvorbis_static.lib",
+            dependencies_out_dir .. "libvorbisfile_static.lib",
+            dependencies_out_dir .. "minizip.lib",
+            dependencies_out_dir .. "zlib.lib",
+            dependencies_out_dir .. "discord_game_sdk.lib",
+            dependencies_out_dir .. "discord_game_sdk.dll.lib",
             "../lemonscript/out/lemonscript.lib",
             "../oxygenengine/out/oxygen.lib",
             "../oxygenengine/out/oxygen_netcore.lib",
@@ -186,21 +143,20 @@ workspace "sonic3air"
             "../sonic3air/source/**.h",
             "../sonic3air/source/**.cpp",
         }
-        postbuildcommands {
-            "{COPY} ../dependencies/discord_game_sdk/lib/%{cfg.architecture}/discord_game_sdk.dll %{cfg.targetdir}"
-        }
     
     project "oxygen"
         dependson {
             "lemonscript",
             "rmxmedia",
-            "oxygen_netcore"
+            "oxygen_netcore",
+            "curl"
         }
         kind "StaticLib"
         cppdialect "C++17"
         filter "system:windows"
             characterset "MBCS"
         filter {}
+        ignoredefaultlibraries { "LIBCMT" }
         targetdir "../oxygenengine/out"
         pchheader "oxygen/pch.h"
         pchsource "../oxygenengine/source/oxygen/pch.cpp"
@@ -224,24 +180,78 @@ workspace "sonic3air"
             "../oxygenengine/source/oxygen/**.h",
             "../oxygenengine/source/oxygen/**.cpp"
         }
-
-    project "dependencies"
-        kind "Makefile"
-        dependson {
-            "zlib",
-            "minizip",
-            "discord_game_sdk"
+    
+    project "ogg-vorbis"
+        local ogg_vorbis_build_commands = {
+            ensure_out_dir_exists,
+            "set _CL_=/MT",
+            "{CHDIR} ../dependencies/libogg/win32/VS2015",
+            "\"" .. get_msbuild_path() .. "\" libogg.sln /target:libogg /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
+            "{COPYFILE} %{cfg.platform}/%{cfg.buildcfg}/libogg.lib " .. dependencies_out_dir,
+            "{CHDIR} ../../../libvorbis/win32/VS2010",
+            "\"" .. get_msbuild_path() .. "\" vorbis_static.sln /target:libvorbis_static /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
+            "\"" .. get_msbuild_path() .. "\" vorbis_static.sln /target:libvorbisfile /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
+            "{COPYFILE} %{cfg.platform}/%{cfg.buildcfg}/libvorbis_static.lib " .. dependencies_out_dir,
+            "{COPYFILE} %{cfg.platform}/%{cfg.buildcfg}/libvorbisfile_static.lib " .. dependencies_out_dir
         }
+
+        local ogg_vorbis_clean_commands = {
+            "{DELETE} ".. dependencies_out_dir .. "libogg.lib",
+            "{DELETE} ".. dependencies_out_dir .. "libvorbis_static.lib",
+            "{DELETE} ".. dependencies_out_dir .. "libvorbisfile_static.lib",
+        }
+        kind "Makefile"
         filter "system:windows"
-            buildcommands(get_msbuild_dependency_build_commands())
-            rebuildcommands(joined_command_lists(get_msbuild_dependency_clean_commands(), get_msbuild_dependency_build_commands()))
-            cleancommands(get_msbuild_dependency_clean_commands())
+            buildcommands(ogg_vorbis_build_commands)
+            rebuildcommands(joined_command_lists(ogg_vorbis_clean_commands, ogg_vorbis_build_commands))
+            cleancommands(ogg_vorbis_clean_commands)
+        filter {}
+    
+    project "sdl2"
+        local sdl2_build_commands = {
+            ensure_out_dir_exists,
+            "set _CL_=/MT",
+            "{CHDIR} ../dependencies/sdl2/VisualC",
+            "\"" .. get_msbuild_path() .. "\" SDL.sln /target:SDL2 /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
+            "\"" .. get_msbuild_path() .. "\" SDL.sln /target:SDL2main /p:PlatformToolset=v142 /property:Configuration=%{cfg.buildcfg} /property:Platform=%{cfg.platform} -verbosity:minimal",
+            "{COPYFILE} %{cfg.platform}/%{cfg.buildcfg}/SDL2.lib " .. dependencies_out_dir,
+            "{COPYFILE} %{cfg.platform}/%{cfg.buildcfg}/SDL2main.lib " .. dependencies_out_dir
+        }
+
+        local sdl2_clean_commands = {
+            "{DELETE} ".. dependencies_out_dir .. "SDL2.lib",
+            "{DELETE} ".. dependencies_out_dir .. "SDL2main.lib",
+        }
+        kind "Makefile"
+        filter "system:windows"
+            buildcommands(sdl2_build_commands)
+            rebuildcommands(joined_command_lists(sdl2_clean_commands, sdl2_build_commands))
+            cleancommands(sdl2_clean_commands)
+        filter {}
+    
+    project "curl"
+        local curl_build_commands = {
+            ensure_out_dir_exists,
+            "set _CL_=/MT",
+            "{CHDIR} ../dependencies/curl/projects/Windows/VC14.10",
+            "\"" .. get_msbuild_path() .. "\" curl-all.sln /target:libcurl /p:PlatformToolset=v142 /property:Configuration=\"LIB Release - DLL Windows SSPI\" /property:Platform=%{cfg.platform} /p:RuntimeLibrary=MT_StaticRelease -verbosity:minimal",
+            "{COPYFILE} \"../../../build/%{cfg.platform}/VC14.10/LIB Release - DLL Windows SSPI/libcurl.lib\" " .. dependencies_out_dir
+        }
+
+        local curl_clean_commands = {
+            "{DELETE} ".. dependencies_out_dir .. "libcurl.lib",
+        }
+        kind "Makefile"
+        filter "system:windows"
+            buildcommands(curl_build_commands)
+            rebuildcommands(joined_command_lists(curl_clean_commands, curl_build_commands))
+            cleancommands(curl_clean_commands)
         filter {}
     
     project "discord_game_sdk"
         kind "StaticLib"
         cppdialect "C++17"
-        targetdir "../dependencies/discord_game_sdk/%{cfg.platform}/%{cfg.buildcfg}"
+        targetdir(dependencies_out_dir)
         common_config_options()
         common_dependency_includes()
         conformancemode "true"
@@ -252,11 +262,19 @@ workspace "sonic3air"
             "../dependencies/discord_game_sdk/cpp/**.h",
             "../dependencies/discord_game_sdk/cpp/**.cpp"
         }
+        postbuildcommands({
+            "{COPY} ../dependencies/discord_game_sdk/lib/%{cfg.architecture}/discord_game_sdk.dll " .. dependencies_out_dir,
+            "{COPY} ../dependencies/discord_game_sdk/lib/%{cfg.architecture}/discord_game_sdk.dll.lib " .. dependencies_out_dir
+        })
+        cleancommands({
+            "{DELETE} " .. dependencies_out_dir .. "discord_game_sdk.dll",
+            "{DELETE} " .. dependencies_out_dir .. "discord_game_sdk.dll.lib"
+        })
     
     project "zlib"
         kind "StaticLib"
         cdialect "C99"
-        targetdir "../dependencies/zlib/contrib/vstudio/vc14/%{cfg.platform}/%{cfg.buildcfg}"
+        targetdir(dependencies_out_dir)
         filter "system:windows"
             characterset "MBCS"
         filter {}
@@ -277,7 +295,7 @@ workspace "sonic3air"
     project "minizip"
         kind "StaticLib"
         cdialect "C99"
-        targetdir "../dependencies/minizip/%{cfg.platform}/%{cfg.buildcfg}"
+        targetdir(dependencies_out_dir)
         filter "system:windows"
             characterset "MBCS"
         filter {}
@@ -306,6 +324,7 @@ workspace "sonic3air"
         filter "system:windows"
             characterset "MBCS"
         filter {}
+        ignoredefaultlibraries { "LIBCMT" }
         targetdir "../lemonscript/out"
         pchheader "lemon/pch.h"
         pchsource "../lemonscript/source/lemon/pch.cpp"
@@ -327,6 +346,7 @@ workspace "sonic3air"
         filter "system:windows"
             characterset "MBCS"
         filter {}
+        ignoredefaultlibraries { "LIBCMT" }
         targetdir "../oxygenengine/out"
         pchheader "oxygen_netcore/pch.h"
         pchsource "../oxygenengine/source/oxygen_netcore/pch.cpp"
@@ -343,7 +363,8 @@ workspace "sonic3air"
 
     project "rmxbase"
         dependson {
-            "dependencies"
+            "zlib",
+            "minizip"
         }
         kind "StaticLib"
         cppdialect "C++17"
@@ -375,6 +396,9 @@ workspace "sonic3air"
         }
 
     project "rmxmedia"
+        dependson {
+            "sdl2"
+        }
         kind "StaticLib"
         cppdialect "C++17"
         filter "system:windows"
@@ -398,7 +422,8 @@ workspace "sonic3air"
 
     project "rmxext_oggvorbis"
         dependson {
-            "rmxmedia"
+            "rmxmedia",
+            "ogg-vorbis"
         }
         kind "StaticLib"
         cppdialect "C++17"

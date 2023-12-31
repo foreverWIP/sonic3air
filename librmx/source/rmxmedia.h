@@ -55,9 +55,9 @@
 
 
 // Library linking via pragma
-#if defined(PLATFORM_WINDOWS) && defined(RMX_LIB)
-	#pragma comment(lib, "rmxmedia.lib")
-#endif
+// #if defined(PLATFORM_WINDOWS) && defined(RMX_LIB)
+// 	#pragma comment(lib, "rmxmedia.lib")
+// #endif
 
 
 

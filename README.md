@@ -41,16 +41,16 @@ For information on how to build for different platforms, find the readme files i
 ## External dependencies
 
 External libraries and code used in this project:
-* SDL2 - in "framework/external/sdl"
-* libogg & libvorbis - in "framework/external/ogg-vorbis"
-* zlib incl. minizip - in "framework/external/zlib"
-* libcurl - in "framework/external/curl"
+* SDL2 - in "dependencies/sdl"
+* libogg & libvorbis - in "dependencies/ogg-vorbis"
+* zlib incl. minizip - in "dependencies/zlib"
+* libcurl - in "dependencies/curl"
 * jsoncpp - in "librmx/source/rmxbase/jsoncpp"
 * GLEW - in "librmx/source/rmxmedia/glew"
-* Sound chip emulation related code from Genesis Plus GX - in "Oxygen/oxygenengine/source/oxygen/simulation/sound"
-* Discord Game SDK - in "Oxygen/sonic3air/source/external/discord_game_sdk"
-* xBRZ upscaler shader code - in "Oxygen/oxygenengine/data/shader" and once more in "Oxygen/sonic3air/data/shader"
-* Hqx upscaler shader code & data files - in "Oxygen/oxygenengine/data/shader" and once more in "Oxygen/sonic3air/data/shader"
+* Sound chip emulation related code from Genesis Plus GX - in "oxygenengine/source/oxygen/simulation/sound"
+* Discord Game SDK - in "dependencies/discord_game_sdk"
+* xBRZ upscaler shader code - in "oxygenengine/data/shader" and once more in "sonic3air/data/shader"
+* Hqx upscaler shader code & data files - in "oxygenengine/data/shader" and once more in "sonic3air/data/shader"
 
 
 ## Contributors

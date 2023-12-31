@@ -10,15 +10,15 @@
 
 
 // Library linking via pragma
-#if defined(PLATFORM_WINDOWS) && defined(RMX_LIB)
-	#pragma comment(lib, "sdl2main.lib")
-	#pragma comment(lib, "sdl2.lib")
-	#pragma comment(lib, "winmm.lib")
-	#pragma comment(lib, "imm32.lib")
-	#pragma comment(lib, "version.lib")
-	#pragma comment(lib, "setupapi.lib")
-	#pragma comment(lib, "opengl32.lib")
-#endif
+// #if defined(PLATFORM_WINDOWS) && defined(RMX_LIB)
+// 	#pragma comment(lib, "sdl2main.lib")
+// 	#pragma comment(lib, "sdl2.lib")
+// 	#pragma comment(lib, "winmm.lib")
+// 	#pragma comment(lib, "imm32.lib")
+// 	#pragma comment(lib, "version.lib")
+// 	#pragma comment(lib, "setupapi.lib")
+// 	#pragma comment(lib, "opengl32.lib")
+// #endif
 
 // This is for some reason needed under Linux
 #if defined(__GNUC__) && __GNUC__ >= 4
@@ -27,16 +27,7 @@
 
 
 // SDL
-#ifdef PLATFORM_WINDOWS
-	// Needed for MSYS2
-	#if defined(__GNUC__)
-		#include <SDL2/SDL.h>
-	#else
-		#include <SDL/SDL.h>
-	#endif
-#else
-	#include <SDL.h>
-#endif
+#include <SDL.h>
 
 
 // OpenGL
